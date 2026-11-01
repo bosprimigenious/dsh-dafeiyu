@@ -5,15 +5,47 @@
 > [updating guide](UPDATING.md). This record is retained in GitHub and excluded
 > from the installable package.
 
-## 2026-10-31 · macOS task navigation / rebased on 0.1.23
+## 2026-11-01 · macOS acceptance / task navigation rebased on 0.1.23
 
 Baseline: `0843238` / official 0.1.23. This unreleased PR only adds task-row
 navigation. The published Python dependency diagnostics and packaged-smoke
 layout isolation are unchanged from the baseline.
 
-- macOS 27.0.1 (26A434), Apple M5 / arm64; one built-in display.
-- `pnpm install --frozen-lockfile` succeeded; `pnpm test`: 144 passed, 0 failed.
-- `pnpm test:python`: 54 tests, 4 Qt-dependent skips (PySide6 unavailable).
+**NOT READY for full acceptance.** Issue #81's requested status/multi-task
+card visual checks passed on the official package. Issue #83's real dragging
+and the PR build's actual Desktop navigation remain untested; PR #97 remains
+a draft. Official 0.1.23 does not contain task-row navigation.
+
+- Environment: official `dsh-dafeiyu@0.1.23`, DSH Desktop `0.2.0-rc.2`,
+  macOS 27.0.1 (26A434), Apple M5 / arm64; built-in display and external
+  SSN-24 connected. Cross-display behavior has not been tested.
+- Issue #81: verified `bubbleScale=0.8`, character scale `0.85`, persistent
+  bubbles and `webOverlay=false` in the real settings page. Balance display
+  was temporarily disabled for public screenshots and then restored.
+  Created actual A/B/C sessions in separate test workspaces and put each into
+  `ask_user_question` waiting state. The three-task card title and all three
+  rows were legible, without clipping or overlapping text. After answering
+  B/C, the remaining A status card title and body were also legible without
+  clipping or overlap. No synthetic task events were injected.
+- Fixed evidence is stored in a separate branch, not added to this PR:
+  [status card](https://raw.githubusercontent.com/bosprimigenious/dsh-dafeiyu/0d86da54bfa8e1486d5550b706e8c20bf24cd0be/docs/acceptance/2026-11-01/official-0.1.23-status-bubble-0.8.png)
+  and [three-task card](https://raw.githubusercontent.com/bosprimigenious/dsh-dafeiyu/0d86da54bfa8e1486d5550b706e8c20bf24cd0be/docs/acceptance/2026-11-01/official-0.1.23-three-tasks-bubble-0.8.png),
+  both pinned to `0d86da54bfa8e1486d5550b706e8c20bf24cd0be`.
+  The [#81 report](https://github.com/QCYTSN/dsh-dafeiyu/issues/81#issuecomment-6554050106)
+  is updated; closure remains the maintainer's decision.
+- Issue #83: no real partial-offscreen drag has been completed. CUA click,
+  right-click and drag attempts returned `AXError.notImplemented`; this is
+  an automation-tool failure, not evidence of a plugin defect. Position retention
+  across window/content changes, full DSH quit/restart, full-screen transitions
+  and two-way cross-display dragging remain untested.
+- PR build: the first three task-row destinations with the page companion
+  disabled, no-client/closed-session handling, drag-without-navigation,
+  full-screen, cross-display, context-menu and transparent-area click-through
+  regressions have not been exercised in real DSH. Windows and Linux manual
+  acceptance were not performed.
+- Local checks on navigation head `1dae5c7`: `pnpm install --frozen-lockfile`
+  succeeded; `pnpm test`: 144 passed, 0 failed. `pnpm test:python`: 54 tests,
+  4 Qt-dependent skips (PySide6 unavailable).
 - `swift test` failed: the installed Command Line Tools cannot resolve XCTest.
 - `pnpm build:helper:darwin` compiled arm64, then failed linking x86_64 because
   the installed CLT compatibility libraries lack that architecture.
@@ -21,15 +53,10 @@ layout isolation are unchanged from the baseline.
   target (`arm64-apple-macosx12.0`) and framework flags. Ad-hoc signature
   verification, packaged visual smoke and stdin-EOF lifecycle checks passed.
   This is an arm64-only local build, not a universal-package success.
-- NOT READY for full acceptance: actual Desktop navigation with the page
-  companion disabled, stale/closed session and no-client feedback, dragging,
-  full-screen/context-menu/click-through regressions remain unverified.
-  The installed Desktop plugin was still 0.1.14 at inspection; its running
-  user task was not interrupted to replace the package. Official 0.1.23 was
-  downloaded and its release SHA-256 verified for the separate #81/#83 run.
-- Multi-display was not tested (no external display). Windows and Linux
-  manual acceptance were not performed. Earlier CI belongs to the old PR
-  head and does not validate this rebased source.
+- [CI run 41192993397, attempt 2](https://github.com/QCYTSN/dsh-dafeiyu/actions/runs/41192993397)
+  passed all four jobs for head `1dae5c78576e1e9a56619a7ec2ffa5891d3ea0eb`.
+  Any subsequent documentation commit needs its own head/CI check; this green
+  run must not be attributed to the newer commit.
 
 ## 2026-10-29 · Python fallback hint and smoke isolation / 0.1.23
 
