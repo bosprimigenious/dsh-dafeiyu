@@ -1,0 +1,15 @@
+{
+  "official-20261102-after-restart-waiting.png": "c92b3dcdfd98f99b614985b52f952e373f773bcc1cf08c73a1f38d1ecadcf097",
+  "official-20261102-fullscreen-dsh.png": "70120a3c8a57c9793e3996e45aeaa0968318f20dfd930f806ad7078231fbbb18",
+  "official-20261102-fullscreen-pet.png": "b18070c13e8fc75125e730d0f92ef85c56c271434da849459c11dbf5c869eb3d",
+  "pr-20261102-three-tasks.png": "3cc36846668c213c5fb7038ccaa193481c0f60076ef60aca68dd93d8e9da07d4",
+  "pr-20261102-row1-A-dsh.png": "ff99e921dc477bb48152c55449545032e5d15e79ab50cde4aba25511df2bc1d7",
+  "pr-20261102-row2-B-dsh.png": "e7ef4bfa5ffa2cc0acdd2e2a58887a55ef415d12153598d1a417a49113cff740",
+  "pr-20261102-row3-C-dsh.png": "1845859a6c769b31928dafe87a45cd8c4e5bb57079462750cc75c3b3d505887e",
+  "pr-20261102-drag-row2-stays-A.png": "d107d95c7293d4647fb50e008b7fbef887350bd35be390cc951f8df39eadf8bb",
+  "pr-20261102-right-menu.png": "1890591968ff5fc91df5bf3517584c60db17839fc6766c51f7659d76ac0cf225",
+  "pr-20261102-fullscreen-row1-A.png": "7354982b2e20d340ee97ef93a4fe54057ee9f91eddcee8185680fe9fb1e7f965",
+  "pr-20261102-transparent-click-through.png": "fae679087e06a927e6577bafa9d861ee0f8ea660d161271620f7869635729f5c",
+  "pr-20261102-C-archived-two-rows.png": "f3df0adea9cbe4b5a4843afd88ec2d6fd92760c8571b25e49eac283fa991992e",
+  "native-boundary-log.jsonl": "a7d513621803736fb5227a3371a6cd4a3cd645b4a8391921e4b88a2e823dab1d"
+}
